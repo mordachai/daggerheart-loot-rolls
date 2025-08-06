@@ -1,0 +1,42 @@
+{
+  "id": "daggerheart-loot-macros",
+  "title": "Daggerheart Loot Macros",
+  "version": "1.0.0",
+  "compatibility": {
+    "minimum": "13",
+    "verified": "13"
+  },
+  "authors": [
+    {
+      "name": "Gus",
+      "flags": {}
+    }
+  ],
+  "flags": {
+    "canUpload": true
+  },
+  "packs": [
+    {
+      "name": "dh-loot-macros",
+      "label": "Daggerheart Loot Macros",
+      "path": "packs/dh-loot-macros",
+      "type": "Macro",
+      "system": "daggerheart",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      }
+    }
+  ],
+  "description": "<p>Macros using the SRD tables from the Daggerheart system to generate loot rolls as descripted in the core book</p>",
+  "url": "https://github.com/mordachai/dh-loot-roll",
+  "relationships": {
+    "requires": [
+      {
+        "id": "daggerheart-srd",
+        "type": "module",
+        "compatibility": {}
+      }
+    ]
+  }
+}
