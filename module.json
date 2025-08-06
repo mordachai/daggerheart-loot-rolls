@@ -30,6 +30,8 @@
   ],
   "description": "<p>Macros using the SRD tables from the Daggerheart system to generate loot rolls as descripted in the core book</p>",
   "url": "https://github.com/mordachai/dh-loot-roll",
+  "manifest": "https://github.com/mordachai/dh-loot-roll/raw/main/module.json",
+  "download": "https://github.com/mordachai/dh-loot-roll/raw/refs/heads/main/daggerheart-loot-macros.zip",
   "relationships": {
     "requires": [
       {
