@@ -16,7 +16,7 @@ Hover over the texts and buttons to view tooltips
 In Foundry VTT, go to the Add-on Modules tab and click Install Module. Then:
 
 1. Paste the following manifest URL into the bottom Manifest URL field:
-```https://github.com/mordachai/dh-loot/raw/main/module.json```
+```https://github.com/mordachai/dh-loot-roll/raw/main/module.json```
 2. Enable the module in your Game Settings under Manage Modules
 
 After that you can drag and drop the macros in the hotbar and use at will.
