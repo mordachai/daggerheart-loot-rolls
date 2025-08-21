@@ -2,6 +2,10 @@
 
 ---
 
+https://github.com/user-attachments/assets/16e335b6-e017-41eb-829b-55c496dd7d9b
+
+---
+
 # Daggerheart Loot Rolls
 
 A simple module for Foundry VTT v13 that rolls results from **Loot** and **Consumables** tables for the Daggerheart system.
