@@ -23,7 +23,7 @@ Each opens a dialog where you choose rarity (Common, Uncommon, Rare, Legendary),
 Install [Daggerheart Extra Content](https://github.com/brunocalado/daggerheart-extra-content).
 It provides ready-to-use Loot and Consumables tables. No import needed, only the module installed and active.
 
-In the module settings you can paste any table UUID from any compendium and it should work fine.
+***If you want to play with other tables, in the module settings, you can paste any table UUID from any compendium, and it should work fine.***
 
 ---
 
