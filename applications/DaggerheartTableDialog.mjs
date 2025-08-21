@@ -57,7 +57,8 @@ export class DaggerheartTableDialog extends foundry.applications.api.HandlebarsA
       rarityRules,
       selectedRarity: this.selectedRarity,
       dicePair: RARITY_CONFIG[this.selectedRarity].dice,
-      rarityColor: RARITY_CONFIG[this.selectedRarity].color
+      rarityColor: RARITY_CONFIG[this.selectedRarity].color,
+      selectDiceText: "DH_TABLES.SelectDiceText"
     };
   }
 

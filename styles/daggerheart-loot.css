@@ -1,4 +1,3 @@
-/* minimal, piggy-backs on Daggerheart’s system styles */
 .daggerheart-table-dialog .rarity-btn.active {
   background-color: rgba(255,255,255,0.08);
   outline: none;
@@ -28,23 +27,198 @@
 .item-card-chat .card-description p {
   margin: 0.5rem 0 0 0;
 }
-
-.dh-draggable-item {
+.dhl-draggable-item {
   font-size:0.95rem;
   color: #F3C267;
 }
-
-.dh-draggable-item a.content-link {
+.dhl-text--center {
+  text-align: center;
+}
+.dhl-draggable-item a.content-link {
   cursor: grab;
   color: #F3C267;
-  border: 2px solid #F3C267;
+  border: 2px solid #626262;
   border-radius: 6px;
   padding: 0.2rem 0.4rem;
   background: none;
 }
-
-.dh-draggable-item i {
+.dhl-draggable-item i {
   color: #F3C267;
   margin-right: 5px;
   font-size: 0.8rem;
+}
+
+/* ===== New dialog layout classes (no inline styles) ===== */
+.dhl-section {
+  padding: 1rem;
+}
+.dhl-heading {
+  font-weight: 600;
+  color: #F3C267;
+  margin-bottom: 1rem;
+}
+
+.dhl-subheading {
+  font-size: large;
+  margin-bottom: 20px;
+}
+.rarity-row {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+}
+.dice-row {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+.dhl-btn-roll {
+  color: #F3C267;
+  background: none;
+  border: 1px solid #F3C267;
+  padding: 0.8rem 2rem;
+  font-weight: bold;
+  font-size: 1.2rem;
+  width: 30%;
+  cursor: pointer;
+}
+.btn-wide {
+  min-width: 120px;
+}
+.btn-block {
+  width: 100%;
+}
+.btn-danger {
+  background: rgba(244, 67, 54, 0.2);
+  border: 1px solid #f44336;
+  color: #ff6b6b;
+}
+.icon-left-gap {
+  margin-right: 0.5rem;
+}
+
+/* ===== Rarity color theming (header + buttons) ===== */
+.rarity-title {
+  /* Color is supplied by rarity--* modifiers below */
+}
+
+/* Common */
+.rarity-title.rarity--common { color: #8B8B8B; }
+.rarity-btn.rarity--common { border-color: #8B8B8B; }
+.rarity-btn.active.rarity--common {
+  background-color: rgba(139, 139, 139, 0.3);
+  box-shadow: 0 0 8px #8B8B8B;
+  color: white;
+}
+
+/* Uncommon */
+.rarity-title.rarity--uncommon { color: #1EFF00; }
+.rarity-btn.rarity--uncommon { border-color: #1EFF00; }
+.rarity-btn.active.rarity--uncommon {
+  background-color: rgba(30, 255, 0, 0.3);
+  box-shadow: 0 0 8px #1EFF00;
+  color: white;
+}
+
+/* Rare */
+.rarity-title.rarity--rare { color: #0070DD; }
+.rarity-btn.rarity--rare { border-color: #0070DD; }
+.rarity-btn.active.rarity--rare {
+  background-color: rgba(0, 112, 221, 0.3);
+  box-shadow: 0 0 8px #0070DD;
+  color: white;
+}
+
+/* Legendary */
+.rarity-title.rarity--legendary { color: #FF8000; }
+.rarity-btn.rarity--legendary { border-color: #FF8000; }
+.rarity-btn.active.rarity--legendary {
+  background-color: rgba(255, 128, 0, 0.3);
+  box-shadow: 0 0 8px #FF8000;
+  color: white;
+}
+
+
+/* ===== Chat card layout (sem inline) ===== */
+.item-card-chat {
+  /* a cor e o text-shadow por raridade são aplicados via [data-rarity="..."] abaixo */
+}
+
+.card-image-container {
+  position: relative;
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 0.5rem;
+  height: 140px; /* mantém a altura original */
+  background: #1e1e2f; /* fallback */
+}
+
+.card-image-container .card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.card-header-text {
+  position: absolute;
+  bottom: 8px;
+  left: 12px;
+}
+
+.dh-card-title {
+  color: var(--dh-color-off-white);
+  margin: 0;
+}
+
+/* Linha meta (raridade + rolagem) */
+.meta-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Chips */
+.rarity-chip {
+  font-weight: bold;
+}
+
+.roll-chip {
+  color: var(--dh-color-gold);
+}
+
+/* Área do UUID arrastável */
+.draggable-wrap {
+  margin-top: 1em;
+  padding: 1em;
+  background: rgba(67, 63, 100, 0.3);
+  border-radius: 6px;
+  text-align: center;
+}
+
+/* ===== Cores por raridade (usando data-atributo para não precisar de helpers) ===== */
+.item-card-chat[data-rarity="Common"] .dh-card-title {
+  text-shadow: 2px 2px 4px #8B8B8B, 0 0 8px #8B8B8B;
+}
+.item-card-chat[data-rarity="Uncommon"] .dh-card-title {
+  text-shadow: 2px 2px 4px #1EFF00, 0 0 8px #1EFF00;
+}
+.item-card-chat[data-rarity="Rare"] .dh-card-title {
+  text-shadow: 2px 2px 4px #0070DD, 0 0 8px #0070DD;
+}
+.item-card-chat[data-rarity="Legendary"] .dh-card-title {
+  text-shadow: 2px 2px 4px #FF8000, 0 0 8px #FF8000;
+}
+
+.item-card-chat[data-rarity="Common"] .rarity-chip { color: #8B8B8B; }
+.item-card-chat[data-rarity="Uncommon"] .rarity-chip { color: #1EFF00; }
+.item-card-chat[data-rarity="Rare"] .rarity-chip { color: #0070DD; }
+.item-card-chat[data-rarity="Legendary"] .rarity-chip { color: #FF8000; }
+
+/* (opcional) leve destaque no título ao passar o mouse */
+.item-card-chat .dh-card-title:hover {
+  filter: brightness(1.03);
 }

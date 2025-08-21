@@ -1,7 +1,8 @@
-<div class="message-content item-card-chat">
-  <div class="card-image-container" style="background-image:url('{{itemImg}}');">
+<div class="message-content item-card-chat" data-rarity="{{rarity}}">
+  <div class="card-image-container">
+    <img class="card-image" src="{{itemImg}}" alt="Item image">
     <div class="card-header-text">
-      <h5 style="color:var(--dh-color-off-white);text-shadow:2px 2px 4px {{rarityColor}},0 0 8px {{rarityColor}};">
+      <h5 class="dh-card-title">
         {{{typeIcon}}} {{itemName}}
       </h5>
     </div>
@@ -9,9 +10,9 @@
 
   <div class="card-content">
     <div class="card-subtitle">
-      <div style="display:flex;justify-content:space-between;align-items:center;">
-        <span style="color:{{rarityColor}};font-weight:bold;" title="{{rarityTooltip}}">{{rarity}}</span>
-        <span style="color:var(--dh-color-gold);" title="{{diceTooltip}}">
+      <div class="meta-row">
+        <span class="rarity-chip" title="{{rarityTooltip}}">{{rarity}}</span>
+        <span class="roll-chip" title="{{diceTooltip}}">
           Roll: {{diceTotal}} ({{diceFormula}})
         </span>
       </div>
@@ -22,8 +23,8 @@
     </div>
 
     {{#if itemUuid}}
-      <div style="margin-top:1em;padding:1em;background:rgba(67,63,100,.3);border-radius:6px;text-align:center;">
-        <div class="dh-draggable-item" title="Drag and drop to your backpack">
+      <div class="draggable-wrap">
+        <div class="dhl-draggable-item" title="Drag and drop to your backpack">
           @UUID[{{itemUuid}}]
         </div>
       </div>
