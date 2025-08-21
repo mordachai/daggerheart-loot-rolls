@@ -1,9 +1,9 @@
 <div class="message-content item-card-chat">
   <div class="card-image-container" style="background-image:url('{{itemImg}}');">
     <div class="card-header-text">
-      <h3 style="color:var(--dh-color-off-white);text-shadow:2px 2px 4px {{rarityColor}},0 0 8px {{rarityColor}};">
+      <h5 style="color:var(--dh-color-off-white);text-shadow:2px 2px 4px {{rarityColor}},0 0 8px {{rarityColor}};">
         {{{typeIcon}}} {{itemName}}
-      </h3>
+      </h5>
     </div>
   </div>
 
@@ -23,7 +23,7 @@
 
     {{#if itemUuid}}
       <div style="margin-top:1em;padding:1em;background:rgba(67,63,100,.3);border-radius:6px;text-align:center;">
-        <div style="font-size:1.1em;" title="Drag and drop to your backpack">
+        <div class="dh-draggable-item" title="Drag and drop to your backpack">
           @UUID[{{itemUuid}}]
         </div>
       </div>

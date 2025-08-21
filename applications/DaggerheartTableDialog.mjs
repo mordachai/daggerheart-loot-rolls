@@ -1,8 +1,6 @@
-// NO imports of "foundry.js" or client-esm paths
+const MODULE_ID = "daggerheart-loot-rolls";
 
-const MODULE_ID = "daggerheart-loot-macros";
-
-/** Rarity configuration */
+/** Rarity configuration (same as original) */
 export const RARITY_CONFIG = {
   common:    { name: "Common",    dice: ["1d12", "2d12"], color: "#8B8B8B" },
   uncommon:  { name: "Uncommon",  dice: ["2d12", "3d12"], color: "#1EFF00" },
@@ -10,7 +8,7 @@ export const RARITY_CONFIG = {
   legendary: { name: "Legendary", dice: ["4d12", "5d12"], color: "#FF8000" }
 };
 
-/** i18n keys, localized at runtime */
+/** i18n keys (localized at runtime) */
 export const RARITY_RULE_KEYS = {
   Common: "DH_TABLES.CommonTooltip",
   Uncommon: "DH_TABLES.UncommonTooltip",
@@ -18,8 +16,10 @@ export const RARITY_RULE_KEYS = {
   Legendary: "DH_TABLES.LegendaryTooltip"
 };
 
-/** Use the global class path in v13 */
-export class DaggerheartTableDialog extends foundry.applications.api.HandlebarsApplicationMixin(foundry.applications.api.ApplicationV2) {
+/** ApplicationV2 + Handlebars mixin (v13) */
+export class DaggerheartTableDialog extends foundry.applications.api.HandlebarsApplicationMixin(
+  foundry.applications.api.ApplicationV2
+) {
   /** @param {'loot'|'consumables'} type */
   constructor(type = "loot", options = {}) {
     super(options);
@@ -36,7 +36,7 @@ export class DaggerheartTableDialog extends foundry.applications.api.HandlebarsA
 
   static PARTS = {
     form: {
-      template: "modules/daggerheart-loot-macros/templates/daggerheart-table-dialog.hbs"
+      template: "modules/daggerheart-loot-rolls/templates/daggerheart-table-dialog.hbs"
     }
   };
 
@@ -45,11 +45,9 @@ export class DaggerheartTableDialog extends foundry.applications.api.HandlebarsA
     const rarityRules = Object.fromEntries(
       Object.entries(RARITY_RULE_KEYS).map(([k, key]) => [k, game.i18n.localize(key)])
     );
-
     const rarityConfigEntries = Object.entries(RARITY_CONFIG).map(([key, v]) => ({
       key, ...v, isActive: key === this.selectedRarity
     }));
-
     return {
       isLoot,
       isConsumables: !isLoot,
@@ -72,7 +70,7 @@ export class DaggerheartTableDialog extends foundry.applications.api.HandlebarsA
         const rarity = ev.currentTarget.dataset.rarity;
         if (RARITY_CONFIG[rarity]) {
           this.selectedRarity = rarity;
-          this.render(); // re-render to update dice & header color
+          this.render(); // update dice & header color
         }
       });
     });
@@ -94,6 +92,7 @@ export class DaggerheartTableDialog extends foundry.applications.api.HandlebarsA
       : game.settings.get(MODULE_ID, "lootTableUuid");
   }
 
+  /** Roll the configured table using a formula and output a styled chat card */
   async rollTable(diceFormula) {
     const isLoot = this.tableType === "loot";
     const rollingKey = isLoot ? "DH_TABLES.RollingForLoot" : "DH_TABLES.RollingForConsumables";
@@ -107,48 +106,49 @@ export class DaggerheartTableDialog extends foundry.applications.api.HandlebarsA
         return;
       }
 
+      // Evaluate the roll using the async-capable API (no deprecated options)
       const roll = new Roll(diceFormula);
-      await roll.evaluate({ async: true });
+      await roll.evaluate(); // supports async terms if any
 
+      // Optional Dice So Nice animation; do NOT post the roll to chat (avoids duplicates)
       if (game.modules.get("dice-so-nice")?.active && game.dice3d?.showForRoll) {
         await game.dice3d.showForRoll(roll, game.user, true);
-      } else {
-        await roll.toMessage({
-          speaker: ChatMessage.getSpeaker(),
-          flavor: game.i18n.format(rollingKey, { formula: diceFormula })
-        });
       }
+      // If you want a basic chat roll too, uncomment:
+      // else {
+      //   await roll.toMessage({
+      //     speaker: ChatMessage.getSpeaker(),
+      //     flavor: game.i18n.format(rollingKey, { formula: diceFormula })
+      //   });
+      // }
 
-        // Get individual dice results
-        const diceResults = roll.dice
-        .map(die => die.results.map(r => r.result).join(", "))
-        .join(" | ");
+      // Dice tooltip (localized)
+      const diceResults = roll.dice.map(d => d.results.map(r => r.result).join(", ")).join(" | ");
+      const diceTooltip = game.i18n.format("DH_TABLES.DiceTooltip", { results: diceResults });
 
-        // Localize the tooltip, inserting results
-        const diceTooltip = game.i18n.format("DH_TABLES.DiceTooltip", {
-        results: diceResults
-        });
-
+      // Draw from table using a fixed-value roll that matches total
       const { total } = roll;
-      const tableRoll = await (new Roll(`${total}`)).evaluate({ async: true });
+      const tableRoll = Roll.fromTotal ? Roll.fromTotal(total) : (new Roll(String(total))).evaluateSync();
       const draw = await table.draw({ displayChat: false, roll: tableRoll });
       const result = draw.results?.[0];
+
       if (!result) {
         ui.notifications.warn(game.i18n.format("DH_TABLES.NoResultFound", { total }));
         return;
       }
 
+      // Resolve item document if present
       let itemDoc = null;
       try {
         if (result.documentUuid)       itemDoc = await fromUuid(result.documentUuid);
         else if (result.getDocument)   itemDoc = await result.getDocument();
       } catch (e) { console.warn("Result document load failed:", e); }
 
-      // v13 TableResult text fields changed; prefer description/name over old text. :contentReference[oaicite:3]{index=3}
+      // Prefer modern fields
       const nameFromResult =
         result.name ?? result.description ?? result.text ?? itemDoc?.name ?? "Unknown";
-
       const cleanName = String(nameFromResult).replace(/^_\d+_/, "");
+
       const { rarity, color } = this._determineRarityFromRoll(diceFormula, total);
       const typeIcon = isLoot ? `<i class="fas fa-treasure-chest"></i>` : `<i class="fas fa-flask"></i>`;
 
@@ -156,32 +156,33 @@ export class DaggerheartTableDialog extends foundry.applications.api.HandlebarsA
         doc?.system?.description?.value ?? doc?.system?.description ??
         doc?.data?.description?.value  ?? doc?.data?.description  ?? "No description available";
 
-// Build context for chat card
-const context = {
-itemImg: itemDoc?.img || "icons/svg/item-bag.svg",
-typeIcon,
-itemName: foundry.utils.escapeHTML(cleanName),
-rarity,
-rarityColor: color,
-rarityTooltip: game.i18n.localize(RARITY_RULE_KEYS[rarity]) || "",
-diceFormula,
-diceTotal: total,
-iceTooltip: foundry.utils.escapeHTML(diceTooltip),
-itemDescription: getDesc(itemDoc),
-itemUuid: itemDoc?.uuid
-};
+      // Chat card context
+      const context = {
+        itemImg: itemDoc?.img || "icons/svg/item-bag.svg",
+        typeIcon,                                // raw HTML for icon
+        itemName: foundry.utils.escapeHTML(cleanName),
+        rarity,
+        rarityColor: color,
+        rarityTooltip: game.i18n.localize(RARITY_RULE_KEYS[rarity]) || "",
+        diceFormula,
+        diceTotal: total,
+        diceTooltip: foundry.utils.escapeHTML(diceTooltip),
+        itemDescription: getDesc(itemDoc),
+        itemUuid: itemDoc?.uuid
+      };
 
-// Render from Handlebars template
-const html = await renderTemplate("modules/daggerheart-loot-macros/templates/dh-loot-chat.hbs", context);
+      // Render from Handlebars template (namespaced API)
+      const html = await foundry.applications.handlebars.renderTemplate(
+        "modules/daggerheart-loot-rolls/templates/dh-loot-chat.hbs",
+        context
+      );
 
-// Send result to chat
-await ChatMessage.create({
-  content: html,
-  speaker: ChatMessage.getSpeaker()
-});
+      // Send result to chat
+      await ChatMessage.create({
+        content: html,
+        speaker: ChatMessage.getSpeaker()
+      });
 
-
-      await ChatMessage.create({ content: html, speaker: ChatMessage.getSpeaker() });
       ui.notifications.info(`${game.i18n.localize("DH_TABLES.Found")}: ${cleanName} (${rarity})`);
     } catch (err) {
       console.error(err);
@@ -192,10 +193,18 @@ await ChatMessage.create({
   _determineRarityFromRoll(diceFormula, total) {
     let rarity = "Common", color = "#8B8B8B";
     const includes = n => diceFormula.includes(`${n}d12`);
-    if (includes(5))           { rarity = "Legendary"; color = "#FF8000"; }
-    else if (includes(4))      { rarity = total >= 40 ? "Legendary" : "Rare"; color = total >= 40 ? "#FF8000" : "#0070DD"; }
-    else if (includes(3))      { rarity = total >= 30 ? "Rare" : "Uncommon"; color = total >= 30 ? "#0070DD" : "#1EFF00"; }
-    else if (includes(2))      { rarity = total >= 20 ? "Uncommon" : "Common"; color = total >= 20 ? "#1EFF00" : "#8B8B8B"; }
+    if (includes(5)) {
+      rarity = "Legendary"; color = "#FF8000";
+    } else if (includes(4)) {
+      if (total >= 40) { rarity = "Legendary"; color = "#FF8000"; }
+      else { rarity = "Rare"; color = "#0070DD"; }
+    } else if (includes(3)) {
+      if (total >= 30) { rarity = "Rare"; color = "#0070DD"; }
+      else { rarity = "Uncommon"; color = "#1EFF00"; }
+    } else if (includes(2)) {
+      if (total >= 20) { rarity = "Uncommon"; color = "#1EFF00"; }
+      else { rarity = "Common"; color = "#8B8B8B"; }
+    }
     return { rarity, color };
   }
 }

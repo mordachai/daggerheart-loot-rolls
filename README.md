@@ -1,5 +1,6 @@
-## Daggerheart Loot Tables
-#### (Foundry Vtt v13, Unofficial Daggerheart system, Daggerheart SRD)
+![Static Badge](https://img.shields.io/badge/Foundry_VTT-13-blue?style=for-the-badge) ![Github All Releases](https://img.shields.io/github/downloads/mordachai/daggerheart-loot-rolls/total.svg?style=for-the-badge) ![GitHub Release](https://img.shields.io/github/v/release/mordachai/daggerheart-loot-rolls?display_name=release&style=for-the-badge&label=Current%20version)
+
+## Daggerheart Loot Rolls
 
 Choose between the four rarity options: Common, Uncommon, Rare, and Legendary. Click on the number of dice you want to roll (each rarity category has two options):
 
@@ -17,7 +18,7 @@ In Foundry VTT, go to the Add-on Modules tab and click Install Module. Then:
 
 1. Paste the following manifest URL into the bottom Manifest URL field:
 ```
-https://github.com/mordachai/dh-loot-roll/raw/main/module.json
+https://github.com/mordachai/daggerheart-loot-rolls/raw/main/module.json
 ```
 3. Enable the module in your Game Settings under Manage Modules
 

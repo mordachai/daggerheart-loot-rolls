@@ -28,3 +28,23 @@
 .item-card-chat .card-description p {
   margin: 0.5rem 0 0 0;
 }
+
+.dh-draggable-item {
+  font-size:0.95rem;
+  color: #F3C267;
+}
+
+.dh-draggable-item a.content-link {
+  cursor: grab;
+  color: #F3C267;
+  border: 2px solid #F3C267;
+  border-radius: 6px;
+  padding: 0.2rem 0.4rem;
+  background: none;
+}
+
+.dh-draggable-item i {
+  color: #F3C267;
+  margin-right: 5px;
+  font-size: 0.8rem;
+}

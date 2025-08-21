@@ -1,14 +1,17 @@
 {
-  "id": "daggerheart-loot-macros",
-  "title": "Daggerheart Loot Tables",
-  "description": "Loot & Consumables table roller for Daggerheart using ApplicationV2 and scene controls.",
-  "version": "2.0.0",
+  "id": "daggerheart-loot-rolls",
+  "title": "Daggerheart Loot Rolls",
+  "description": "Universal Loot & Consumables table roller for Daggerheart system.",
+  "version": "3.0.0",
   "compatibility": {
     "minimum": "13",
     "verified": "13"
   },
   "authors": [
-    { "name": "Uktena", "email": "gustavo@uktena.es", "flags": {} }
+    {
+     "name": "Gus",
+     "flags": {}
+    }
   ],
   "esmodules": [
     "scripts/module.mjs"
@@ -21,20 +24,27 @@
       "lang": "en",
       "name": "English",
       "path": "lang/en.json"
+    },
+        {
+      "lang": "pt-br",
+      "name": "Português (Brasil)",
+      "path": "lang/pt-br.json"
     }
   ],
   "relationships": {
-    "requires": [
+    "recommends": [
       {
-        "id": "daggerheart-srd",
+        "id": "daggerheart-extra-content",
         "type": "module",
         "compatibility": {}
       }
     ]
   },
+
+  "url": "https://github.com/mordachai/daggerheart-loot-rolls",
+  "manifest": "https://github.com/mordachai/daggerheart-loot-rolls/raw/main/module.json",
+  "download": "https://github.com/mordachai/daggerheart-loot-rolls/releases/latest/download/daggerheart-loot-rolls.zip",
+
   "packs": [],
-  "license": "MIT",
-  "readme": "README.md",
-  "bugs": "",
-  "changelog": ""
+  "license": "MIT"
 }

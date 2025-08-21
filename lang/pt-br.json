@@ -1,0 +1,33 @@
+{
+  "DH_TABLES": {
+    "LootTableRoller": "Rolador de Tabela de Tesouros",
+    "ConsumablesTableRoller": "Rolador de Tabela de Consumíveis",
+    "SelectItemRarity": "Selecione a Raridade do Item",
+    "SelectConsumableRarity": "Selecione a Raridade do Consumível",
+    "CommonItems": "Itens Comuns",
+    "UncommonItems": "Itens Incomuns",
+    "RareItems": "Itens Raros",
+    "LegendaryItems": "Itens Lendários",
+    "CommonConsumables": "Consumíveis Comuns",
+    "UncommonConsumables": "Consumíveis Incomuns",
+    "RareConsumables": "Consumíveis Raros",
+    "LegendaryConsumables": "Consumíveis Lendários",
+    "CommonTooltip": "Itens comuns podem ser encontrados em um acampamento abandonado ou facilmente disponíveis em uma loja local.",
+    "UncommonTooltip": "Itens incomuns podem ser encontrados em quantidade limitada em uma loja, guardados em um local protegido em um acampamento ou oferecidos como parte da recompensa por um trabalho.",
+    "RareTooltip": "Itens raros podem estar trancados em uma loja, oferecidos como única recompensa por um trabalho ou descobertos entre as posses de um NPC poderoso.",
+    "LegendaryTooltip": "Itens lendários podem ser únicos, uma recompensa por um trabalho extremamente difícil ou perigoso, ou o tesouro mais precioso e protegido de um adversário poderoso.",
+    "Close": "Fechar",
+    "Found": "Encontrado",
+    "DiceTooltip": "Resultados dos dados: [{results}]",
+    "LootTableUUID": "UUID da Tabela de Tesouros",
+    "LootTableUUIDHint": "UUID do compêndio para a tabela de rolagem de tesouros",
+    "ConsumablesTableUUID": "UUID da Tabela de Consumíveis",
+    "ConsumablesTableUUIDHint": "UUID do compêndio para a tabela de rolagem de consumíveis",
+    "RollingForLoot": "Rolando {formula} na tabela de tesouros",
+    "RollingForConsumables": "Rolando {formula} na tabela de consumíveis",
+    "ErrorRollingLoot": "Erro ao rolar tabela de tesouros. Verifique o console para detalhes.",
+    "ErrorRollingConsumables": "Erro ao rolar tabela de consumíveis. Verifique o console para detalhes.",
+    "TableNotFound": "Não foi possível encontrar tabela com UUID: {uuid}",
+    "NoResultFound": "Nenhum resultado encontrado para o total da rolagem: {total}"
+  }
+}
