@@ -1,0 +1,30 @@
+/* minimal, piggy-backs on Daggerheart’s system styles */
+.daggerheart-table-dialog .rarity-btn.active {
+  background-color: rgba(255,255,255,0.08);
+  outline: none;
+}
+.daggerheart-table-dialog .dice-btn {
+  font-weight: 600;
+}
+.item-card-chat .card-image-container {
+  background-size: cover;
+  background-position: center;
+  border-radius: 6px;
+  height: 140px;
+  position: relative;
+  margin-bottom: 0.5rem;
+}
+.item-card-chat .card-header-text {
+  position: absolute;
+  bottom: 8px;
+  left: 12px;
+}
+.item-card-chat .card-content {
+  padding: 0.25rem 0.25rem 0.5rem 0.25rem;
+}
+.item-card-chat .card-subtitle {
+  margin-bottom: 0.25rem;
+}
+.item-card-chat .card-description p {
+  margin: 0.5rem 0 0 0;
+}

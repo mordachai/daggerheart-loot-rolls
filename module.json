@@ -1,37 +1,28 @@
 {
   "id": "daggerheart-loot-macros",
-  "title": "Daggerheart Loot Macros",
-  "version": "1.0.1",
+  "title": "Daggerheart Loot Tables",
+  "description": "Loot & Consumables table roller for Daggerheart using ApplicationV2 and scene controls.",
+  "version": "2.0.0",
   "compatibility": {
     "minimum": "13",
     "verified": "13"
   },
   "authors": [
+    { "name": "Uktena", "email": "gustavo@uktena.es", "flags": {} }
+  ],
+  "esmodules": [
+    "scripts/module.mjs"
+  ],
+  "styles": [
+    "styles/daggerheart-loot.css"
+  ],
+  "languages": [
     {
-      "name": "Gus",
-      "flags": {}
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
     }
   ],
-  "flags": {
-    "canUpload": true
-  },
-  "packs": [
-    {
-      "name": "dh-loot-macros",
-      "label": "Daggerheart Loot Macros",
-      "path": "packs/dh-loot-macros",
-      "type": "Macro",
-      "system": "daggerheart",
-      "ownership": {
-        "PLAYER": "OBSERVER",
-        "ASSISTANT": "OWNER"
-      }
-    }
-  ],
-  "description": "<p>Macros using the SRD tables from the Daggerheart system to generate loot rolls as described in the core book</p>",
-  "url": "https://github.com/mordachai/dh-loot-roll",
-  "manifest": "https://github.com/mordachai/dh-loot-roll/raw/main/module.json",
-  "download": "https://github.com/mordachai/dh-loot-roll/raw/main/daggerheart-loot-macros.zip",
   "relationships": {
     "requires": [
       {
@@ -40,5 +31,10 @@
         "compatibility": {}
       }
     ]
-  }
+  },
+  "packs": [],
+  "license": "MIT",
+  "readme": "README.md",
+  "bugs": "",
+  "changelog": ""
 }

@@ -1,0 +1,33 @@
+{
+  "DH_TABLES": {
+    "LootTableRoller": "Loot Table Roller",
+    "ConsumablesTableRoller": "Consumables Table Roller",
+    "SelectItemRarity": "Select Item Rarity",
+    "SelectConsumableRarity": "Select Consumable Rarity",
+    "CommonItems": "Common Items",
+    "UncommonItems": "Uncommon Items",
+    "RareItems": "Rare Items",
+    "LegendaryItems": "Legendary Items",
+    "CommonConsumables": "Common Consumables",
+    "UncommonConsumables": "Uncommon Consumables",
+    "RareConsumables": "Rare Consumables",
+    "LegendaryConsumables": "Legendary Consumables",
+    "CommonTooltip": "Common items might be found at an abandoned camp or readily available at a local shop.",
+    "UncommonTooltip": "Uncommon items might be found in limited supply in a shop, kept in a protected place in a camp, or offered as part of a reward for a job.",
+    "RareTooltip": "Rare items might be kept under lock and key in a shop, offered as the sole reward for a job, or discovered among a powerful NPC's possessions.",
+    "LegendaryTooltip": "Legendary items might be the only item of their kind, a reward for an incredibly difficult or dangerous job, or a powerful adversary's most precious and guarded treasure.",
+    "Close": "Close",
+    "Found": "Found",
+    "DiceTooltip": "Rolled results: [{results}]",
+    "LootTableUUID": "Loot Table UUID",
+    "LootTableUUIDHint": "Compendium UUID for the loot roll table",
+    "ConsumablesTableUUID": "Consumables Table UUID",
+    "ConsumablesTableUUIDHint": "Compendium UUID for the consumables roll table",
+    "RollingForLoot": "Rolling {formula} for loot table",
+    "RollingForConsumables": "Rolling {formula} for consumables table",
+    "ErrorRollingLoot": "Error rolling loot table. Check console for details.",
+    "ErrorRollingConsumables": "Error rolling consumables table. Check console for details.",
+    "TableNotFound": "Could not find table with UUID: {uuid}",
+    "NoResultFound": "No result found for roll total: {total}"
+  }
+}
