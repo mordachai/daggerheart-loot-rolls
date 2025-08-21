@@ -43,7 +43,7 @@ It provides ready-to-use Loot and Consumables tables. No import needed, only the
 
 Open **Daggerheart Tools** in the scene controls, pick Loot or Consumables, choose rarity and dice, and roll.
 
-<img width="1372" height="867" alt="image" src="https://github.com/user-attachments/assets/a27202e3-44ba-4c1b-9033-752c1ef36036" />
+<img width="1372" height="867" alt="image" src="https://github.com/user-attachments/assets/ae3500d8-3827-498d-95bb-5bbaa6ec9cd5" />
 
 The item will appear in the chat after the roll, and you'll be able to drag and drop it directly into your inventory.
 
