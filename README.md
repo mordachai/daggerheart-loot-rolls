@@ -49,6 +49,3 @@ The item will appear in the chat after the roll, and you'll be able to drag and 
 
 Hovering over the text and buttons will provide you with extra information.
 
----
-
-Want me to also shrink the **Usage** section to a single sentence (“Open Daggerheart Tools, pick a table, roll, see results in chat”), or keep it as is?
