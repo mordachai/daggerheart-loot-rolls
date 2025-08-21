@@ -11,6 +11,9 @@ It adds a new group in the **Scene Controls** called **Daggerheart Tools**, with
 * Loot Tables
 * Consumables Tables
 
+<img width="753" height="429" alt="image" src="https://github.com/user-attachments/assets/b1d2f330-1566-4034-8a54-4a61b2a56a13" />
+
+
 Each opens a dialog where you choose rarity (Common, Uncommon, Rare, Legendary), select dice, and get a chat result with item info and a drag-and-drop UUID.
 
 ---
@@ -18,7 +21,7 @@ Each opens a dialog where you choose rarity (Common, Uncommon, Rare, Legendary),
 ## Recommended
 
 Install [Daggerheart Extra Content](https://github.com/brunocalado/daggerheart-extra-content).
-It provides ready-to-use Loot and Consumables tables. No import needed, only the module installed.
+It provides ready-to-use Loot and Consumables tables. No import needed, only the module installed and active.
 
 In the module settings you can paste any table UUID from any compendium and it should work fine.
 
@@ -39,6 +42,12 @@ In the module settings you can paste any table UUID from any compendium and it s
 ## Usage
 
 Open **Daggerheart Tools** in the scene controls, pick Loot or Consumables, choose rarity and dice, and roll.
+
+<img width="1372" height="867" alt="image" src="https://github.com/user-attachments/assets/a27202e3-44ba-4c1b-9033-752c1ef36036" />
+
+The item will appear in the chat after the roll, and you'll be able to drag and drop it directly into your inventory.
+
+Hovering over the text and buttons will provide you with extra information.
 
 ---
 
