@@ -15,8 +15,7 @@ It adds a new group in the **Scene Controls** called **Daggerheart Tools**, with
 * Loot Tables
 * Consumables Tables
 
-<img width="753" height="429" alt="image" src="https://github.com/user-attachments/assets/b1d2f330-1566-4034-8a54-4a61b2a56a13" />
-
+<img width="619" height="455" alt="image" src="https://github.com/user-attachments/assets/501d3ff3-90ad-46c4-bbf2-1f99af50db1a" />
 
 Each opens a dialog where you choose rarity (Common, Uncommon, Rare, Legendary), select dice, and get a chat result with item info and a drag-and-drop UUID.
 
