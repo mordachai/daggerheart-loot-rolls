@@ -29,6 +29,8 @@
     "ErrorRollingLoot": "Error rolling loot table. Check console for details.",
     "ErrorRollingConsumables": "Error rolling consumables table. Check console for details.",
     "TableNotFound": "Could not find table with UUID: {uuid}",
-    "NoResultFound": "No result found for roll total: {total}"
+    "NoResultFound": "No result found for roll total: {total}",
+    "SelectTableText": "Select a table",
+    "RollButtonText": "Roll Loot"
   }
 }

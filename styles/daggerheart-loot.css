@@ -5,6 +5,12 @@
   box-shadow: none;
   height: auto;
   font-size: larger;
+  margin-bottom: 20px;
+}
+
+.rarity-btn.active {
+  color: white;
+  border-bottom: #eaeaea 3px solid;
 }
 .daggerheart-table-dialog .dice-btn {
   font-weight: 600;
@@ -87,7 +93,6 @@
   width: 100%;
   gap: 0.5rem;
   flex-wrap: wrap;
-  margin-bottom: 0.5rem;
 }
 .dice-row {
   display: flex;
@@ -195,6 +200,10 @@
 .dh-card-title {
   color: var(--dh-color-off-white);
   margin: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 /* Linha meta (raridade + rolagem) */
@@ -247,7 +256,8 @@
 }
 
 /* Dialog needs a containing position for the bg */
-.daggerheart-table-dialog { position: relative; }
+.daggerheart-table-dialog .dhl-popup { position: relative; }
+
 
 /* Top-left watermark background */
 .daggerheart-table-dialog .dialog-bg {
@@ -259,7 +269,7 @@
   background-repeat: no-repeat;
   background-position: top left;
   background-size: cover;
-  opacity: 0.05;
+  opacity: 0.1;
   pointer-events: none;
 }
 
@@ -276,3 +286,9 @@
   background-image: url("modules/daggerheart-loot-rolls/ui/dh-bg-trinkets.svg");
 }
 */
+
+.dhl-type-icon {
+  width: 32px;
+  height: 32px;
+  margin-right: 0.2rem;
+}

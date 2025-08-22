@@ -29,6 +29,8 @@
     "ErrorRollingLoot": "Erro ao rolar tabela de tesouros. Verifique o console para detalhes.",
     "ErrorRollingConsumables": "Erro ao rolar tabela de consumíveis. Verifique o console para detalhes.",
     "TableNotFound": "Não foi possível encontrar tabela com UUID: {uuid}",
-    "NoResultFound": "Nenhum resultado encontrado para o total da rolagem: {total}"
+    "NoResultFound": "Nenhum resultado encontrado para o total da rolagem: {total}",
+    "SelectTableText": "Selecione uma tabela",
+    "RollButtonText": "Rolagem de Loot"
   }
 }

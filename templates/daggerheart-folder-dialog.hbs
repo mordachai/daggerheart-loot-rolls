@@ -1,0 +1,36 @@
+<div class="dhl-popup dialog--folder">
+  <div class="dialog-bg"></div>
+
+  <div class="dhl-popup__section dhl-section">
+    <h2 class="dhl-heading dhl-text--center">
+      {{dialogTitle}}
+    </h2>
+
+    <div class="dhl-text--center dhl-subheading">
+      {{localize selectTableText}}:
+    </div>
+
+    <div class="rarity-row">
+      {{#each tableButtons}}
+        <button
+          type="button"
+          class="dhl-btn dhl-btn--primary rarity-btn {{#if this.isActive}}active{{/if}}"
+          data-action="select-table"
+          data-name="{{this.name}}"
+          title="{{this.name}}">
+          {{this.name}}
+        </button>
+      {{/each}}
+    </div>
+
+    <div class="dice-row">
+      <button
+        type="button"
+        class="dhl-btn-roll"
+        data-action="roll-selected"
+        {{#unless hasSelection}}disabled{{/unless}}>
+        {{localize rollButtonText}}
+      </button>
+    </div>
+  </div>
+</div>

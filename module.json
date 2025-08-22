@@ -1,8 +1,8 @@
 {
   "id": "daggerheart-loot-rolls",
   "title": "Daggerheart Loot Rolls",
-  "description": "<p>Universal Loot &amp; Consumables table roller for Daggerheart system.</p>",
-  "version": "3.3.0",
+  "description": "<p>Awesome table roller for Daggerheart system.</p>",
+  "version": "4.0.0",
   "compatibility": {
     "minimum": "13",
     "verified": "13"
@@ -35,28 +35,9 @@
       "flags": {}
     }
   ],
-  "relationships": {
-    "recommends": [
-      {
-        "id": "daggerheart-extra-content",
-        "type": "module",
-        "compatibility": {}
-      }
-    ]
-  },
   "url": "https://github.com/mordachai/daggerheart-loot-rolls",
   "manifest": "https://github.com/mordachai/daggerheart-loot-rolls/raw/main/module.json",
   "download": "https://github.com/mordachai/daggerheart-loot-rolls/releases/latest/download/daggerheart-loot-rolls.zip",
-  
-  "packFolders": [{
-    "name": "Daggerheart Loot Rolls",
-    "sorting": "a",
-    "color": "#A56C02",
-    "packs": [
-      "daggerheart-loot-macros",
-      "daggerheart-loot-tables"
-    ]
-  }],
   "packs": [
     {
       "name": "daggerheart-loot-macros",
@@ -77,6 +58,27 @@
         "PLAYER": "OBSERVER",
         "ASSISTANT": "OWNER"
       }
+    },
+    {
+      "name": "motherboard-tables",
+      "label": "Motherboard Loot_tables",
+      "path": "packs/motherboard-tables",
+      "type": "RollTable",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      }
+    },
+    {
+      "name": "motherboard-items",
+      "label": "Motherboard Items",
+      "path": "packs/motherboard-items",
+      "type": "Item",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      },
+      "system": "daggerheart"
     }
   ],
   "license": "MIT",

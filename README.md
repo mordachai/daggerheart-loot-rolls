@@ -8,12 +8,20 @@ https://github.com/user-attachments/assets/16e335b6-e017-41eb-829b-55c496dd7d9b
 
 # Daggerheart Loot Rolls
 
-A simple module for Foundry VTT v13 that rolls results from **Loot** and **Consumables** tables for the Daggerheart system.
+## New Feature: Universal Loot Roll
 
-It adds a new group in the **Scene Controls** called **Daggerheart Tools**, with two buttons:
+Give all your loot tables the same polished UI and chat cards as **Loot** and **Consumables**.
 
-* Loot Tables
-* Consumables Tables
+After you create your items roll table, place them in a **RollTable** compendium whose label ends with `_tables`— for example, **Age of Umbra Loot\_tables**. See the example below:
+
+
+
+A button will automatically appear in **Scene Controls → Daggerheart tools**, named after your compendium (with the `_tables` suffix removed). Each table inside the compendium can now be selected and rolled. The resulting chat cards keep drag-and-drop for linked Items (items must already exist in your world).
+
+---
+
+Daggerheart Loot Rolls its simple module for Foundry VTT v13 that rolls results from **Loot** and **Consumables** tables for the Daggerheart system. And now transform your ugly rolls in beautifull dialogs and chat cards.
+
 
 <img width="619" height="455" alt="image" src="https://github.com/user-attachments/assets/501d3ff3-90ad-46c4-bbf2-1f99af50db1a" />
 
