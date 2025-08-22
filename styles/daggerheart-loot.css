@@ -1,6 +1,10 @@
-.daggerheart-table-dialog .rarity-btn.active {
-  background-color: rgba(255,255,255,0.08);
+.daggerheart-table-dialog .rarity-btn {
+  background: none;
   outline: none;
+  border: none;
+  box-shadow: none;
+  height: auto;
+  font-size: larger;
 }
 .daggerheart-table-dialog .dice-btn {
   font-weight: 600;
@@ -51,6 +55,10 @@
 /* ===== New dialog layout classes (no inline styles) ===== */
 .dhl-section {
   padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 .dhl-heading {
   font-weight: 600;
@@ -62,12 +70,24 @@
   font-size: large;
   margin-bottom: 20px;
 }
+.rarity-row-container {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 90%;
+  flex-wrap: wrap;
+  margin-bottom: 1.25rem;
+  padding: 20px 10px;
+  border: 2px solid #626262;
+  border-radius: 8px;
+}
 .rarity-row {
   display: flex;
+  justify-content: space-evenly;
+  width: 100%;
   gap: 0.5rem;
   flex-wrap: wrap;
-  justify-content: center;
-  margin-bottom: 1.25rem;
+  margin-bottom: 0.5rem;
 }
 .dice-row {
   display: flex;
@@ -82,7 +102,6 @@
   padding: 0.8rem 2rem;
   font-weight: bold;
   font-size: 1.2rem;
-  width: 30%;
   cursor: pointer;
 }
 .btn-wide {
@@ -106,39 +125,43 @@
 }
 
 /* Common */
-.rarity-title.rarity--common { color: #8B8B8B; }
-.rarity-btn.rarity--common { border-color: #8B8B8B; }
+/* .rarity-title.rarity--common { color: #8B8B8B; }
+.rarity-btn.rarity--common { border-color: #8B8B8B; } */
 .rarity-btn.active.rarity--common {
-  background-color: rgba(139, 139, 139, 0.3);
-  box-shadow: 0 0 8px #8B8B8B;
+  /* background-color: rgba(139, 139, 139, 0.3); */
+  /* box-shadow: 0 0 8px #8B8B8B; */
   color: white;
+  border-bottom: #8B8B8B 3px solid;
 }
 
 /* Uncommon */
-.rarity-title.rarity--uncommon { color: #1EFF00; }
-.rarity-btn.rarity--uncommon { border-color: #1EFF00; }
+/* .rarity-title.rarity--uncommon { color: #1EFF00; } */
+/* .rarity-btn.rarity--uncommon { border-color: #1EFF00; } */
 .rarity-btn.active.rarity--uncommon {
-  background-color: rgba(30, 255, 0, 0.3);
-  box-shadow: 0 0 8px #1EFF00;
+  /* background-color: rgba(30, 255, 0, 0.3); */
+  /* box-shadow: 0 0 8px #1EFF00; */
   color: white;
+  border-bottom: 3px solid #1EFF00;
 }
 
 /* Rare */
-.rarity-title.rarity--rare { color: #0070DD; }
-.rarity-btn.rarity--rare { border-color: #0070DD; }
+/* .rarity-title.rarity--rare { color: #0070DD; }
+.rarity-btn.rarity--rare { border-color: #0070DD; } */
 .rarity-btn.active.rarity--rare {
-  background-color: rgba(0, 112, 221, 0.3);
-  box-shadow: 0 0 8px #0070DD;
+  /* background-color: rgba(0, 112, 221, 0.3); */
+  /* box-shadow: 0 0 8px #0070DD; */
+  border-bottom: #0070DD 3px solid;
   color: white;
 }
 
 /* Legendary */
-.rarity-title.rarity--legendary { color: #FF8000; }
-.rarity-btn.rarity--legendary { border-color: #FF8000; }
+/* .rarity-title.rarity--legendary { color: #FF8000; }
+.rarity-btn.rarity--legendary { border-color: #FF8000; } */
 .rarity-btn.active.rarity--legendary {
-  background-color: rgba(255, 128, 0, 0.3);
-  box-shadow: 0 0 8px #FF8000;
+  /* background-color: rgba(255, 128, 0, 0.3); */
+  /* box-shadow: 0 0 8px #FF8000; */
   color: white;
+  border-bottom: 3px solid #FF8000;
 }
 
 
@@ -222,3 +245,34 @@
 .item-card-chat .dh-card-title:hover {
   filter: brightness(1.03);
 }
+
+/* Dialog needs a containing position for the bg */
+.daggerheart-table-dialog { position: relative; }
+
+/* Top-left watermark background */
+.daggerheart-table-dialog .dialog-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 256px;
+  height: 256px;
+  background-repeat: no-repeat;
+  background-position: top left;
+  background-size: cover;
+  opacity: 0.05;
+  pointer-events: none;
+}
+
+/* Per-type backgrounds (CSS-only source of truth) */
+.daggerheart-table-dialog.dialog--loot .dialog-bg {
+  background-image: url("/icons/containers/chest/chest-oak-steel-brown.webp");
+}
+.daggerheart-table-dialog.dialog--consumables .dialog-bg {
+  background-image: url("/icons/consumables/potions/bottle-round-corked-orante-red.webp");
+}
+
+/* Example placeholder for future tables:
+.daggerheart-table-dialog.dialog--trinkets .dialog-bg {
+  background-image: url("modules/daggerheart-loot-rolls/ui/dh-bg-trinkets.svg");
+}
+*/

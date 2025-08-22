@@ -1,24 +1,27 @@
-<form class="dhl-popup daggerheart-table-dialog">
+<form class="dhl-popup daggerheart-table-dialog dialog--{{tableType}}">
+  <div class="dialog-bg"></div>
+
   <div class="dhl-popup__section dhl-section">
     <h2 class="dhl-heading dhl-text--center">
       {{dialogTitle}}
     </h2>
 
-    <div class="dhl-text--center dhl-subheading">
-      {{localize headerText}}:
-    </div>
-
-    <div class="rarity-row">
-      {{#each rarityConfig}}
-        <button
-          type="button"
-          class="dhl-btn dhl-btn--primary rarity-btn rarity--{{this.key}} {{#if this.isActive}}active{{/if}}"
-          data-action="select-rarity"
-          data-rarity="{{this.key}}"
-          title="{{lookup ../rarityRules this.name}}">
-          {{this.name}}
-        </button>
-      {{/each}}
+    <div class="rarity-row-container">
+      <div class="dhl-text--center dhl-subheading">
+        {{localize headerText}}:
+      </div>
+      <div class="rarity-row">
+        {{#each rarityConfig}}
+          <button
+            type="button"
+            class="dhl-btn dhl-btn--primary rarity-btn rarity--{{this.key}} {{#if this.isActive}}active{{/if}}"
+            data-action="select-rarity"
+            data-rarity="{{this.key}}"
+            title="{{lookup ../rarityRules this.name}}">
+            {{this.name}}
+          </button>
+        {{/each}}
+      </div>
     </div>
 
     <div class="dhl-text--center dhl-subheading">
@@ -26,28 +29,12 @@
     </div>
 
     <div class="dice-row">
-      <button
-        type="button"
-        class="dhl-btn-roll"
-        data-action="roll-dice"
-        data-formula="{{dicePair.[0]}}">
+      <button type="button" class="dhl-btn-roll" data-action="roll-dice" data-formula="{{dicePair.[0]}}">
         {{dicePair.[0]}}
       </button>
-      <button
-        type="button"
-        class="dhl-btn-roll"
-        data-action="roll-dice"
-        data-formula="{{dicePair.[1]}}">
+      <button type="button" class="dhl-btn-roll" data-action="roll-dice" data-formula="{{dicePair.[1]}}">
         {{dicePair.[1]}}
       </button>
     </div>
-
-    {{!-- <button
-      type="button"
-      class="dhl-btn dhl-btn--close btn-danger btn-block"
-      data-action="close">
-      <i class="fas fa-times icon-left-gap"></i>
-      {{localize "DH_TABLES.Close"}}
-    </button> --}}
   </div>
 </form>

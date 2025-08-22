@@ -2,7 +2,7 @@
   "id": "daggerheart-loot-rolls",
   "title": "Daggerheart Loot Rolls",
   "description": "Universal Loot & Consumables table roller for Daggerheart system.",
-  "version": "3.1.0",
+  "version": "3.2.0",
   "compatibility": {
     "minimum": "13",
     "verified": "13"

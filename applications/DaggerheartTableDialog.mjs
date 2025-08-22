@@ -41,24 +41,35 @@ export class DaggerheartTableDialog extends foundry.applications.api.HandlebarsA
   };
 
   _prepareContext() {
-    const isLoot = this.tableType === "loot";
     const rarityRules = Object.fromEntries(
       Object.entries(RARITY_RULE_KEYS).map(([k, key]) => [k, game.i18n.localize(key)])
     );
     const rarityConfigEntries = Object.entries(RARITY_CONFIG).map(([key, v]) => ({
       key, ...v, isActive: key === this.selectedRarity
     }));
+
     return {
-      isLoot,
-      isConsumables: !isLoot,
-      dialogTitle: game.i18n.localize(isLoot ? "DH_TABLES.LootTableRoller" : "DH_TABLES.ConsumablesTableRoller"),
-      headerText:  game.i18n.localize(isLoot ? "DH_TABLES.SelectItemRarity" : "DH_TABLES.SelectConsumableRarity"),
+      dialogTitle: game.i18n.localize(
+        this.tableType === "loot"
+          ? "DH_TABLES.LootTableRoller"
+          : this.tableType === "consumables"
+          ? "DH_TABLES.ConsumablesTableRoller"
+          : "DH_TABLES.LootTableRoller" // fallback if you add more later
+      ),
+      headerText: game.i18n.localize(
+        this.tableType === "loot"
+          ? "DH_TABLES.SelectItemRarity"
+          : this.tableType === "consumables"
+          ? "DH_TABLES.SelectConsumableRarity"
+          : "DH_TABLES.SelectItemRarity"
+      ),
       rarityConfig: rarityConfigEntries,
       rarityRules,
       selectedRarity: this.selectedRarity,
       dicePair: RARITY_CONFIG[this.selectedRarity].dice,
       rarityColor: RARITY_CONFIG[this.selectedRarity].color,
-      selectDiceText: "DH_TABLES.SelectDiceText"
+      selectDiceText: "DH_TABLES.SelectDiceText",
+      tableType: this.tableType
     };
   }
 
