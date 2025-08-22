@@ -14,6 +14,7 @@ Give all your loot tables the same polished UI and chat cards as **Loot** and **
 
 After you create your items roll table, place them in a **RollTable** compendium whose label ends with `_tables`— for example, **Age of Umbra Loot\_tables**. See the example below:
 
+<img width="1426" height="860" alt="image" src="https://github.com/user-attachments/assets/0edfe8ad-8ff8-4c47-9a60-d6e52e22a5e8" />
 
 
 A button will automatically appear in **Scene Controls → Daggerheart tools**, named after your compendium (with the `_tables` suffix removed). Each table inside the compendium can now be selected and rolled. The resulting chat cards keep drag-and-drop for linked Items (items must already exist in your world).
