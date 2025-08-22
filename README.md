@@ -19,6 +19,13 @@ It adds a new group in the **Scene Controls** called **Daggerheart Tools**, with
 
 Each opens a dialog where you choose rarity (Common, Uncommon, Rare, Legendary), select dice, and get a chat result with item info and a drag-and-drop UUID.
 
+## I prefer to use macros...
+
+Well, you can. Take a look at the compendiums, you will see **Daggerheart Loot Macros** inside the Daggerheart Loot Rolls folder.
+
+<img width="680" height="380" alt="image" src="https://github.com/user-attachments/assets/a74a2ac0-7c38-4312-9a1c-bec818085bfb" />
+
+
 ---
 
 ## Recommended
