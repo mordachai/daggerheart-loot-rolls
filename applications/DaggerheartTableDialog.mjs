@@ -77,7 +77,8 @@ export class DaggerheartTableDialog extends foundry.applications.api.HandlebarsA
     const el = this.element;
     if (!el) return;
 
-    el.querySelectorAll("[data-action='select-rarity']").forEach(btn => {
+    // Rarity buttons
+    el.querySelectorAll("[data-action='select-rarity']").forEach((btn) => {
       btn.addEventListener("click", (ev) => {
         const rarity = ev.currentTarget.dataset.rarity;
         if (RARITY_CONFIG[rarity]) {
@@ -87,15 +88,24 @@ export class DaggerheartTableDialog extends foundry.applications.api.HandlebarsA
       });
     });
 
-    el.querySelectorAll("[data-action='roll-dice']").forEach(btn => {
-      btn.addEventListener("click", async (ev) => {
+    // Dice buttons: close immediately, roll on next tick
+    el.querySelectorAll("[data-action='roll-dice']").forEach((btn) => {
+      btn.addEventListener("click", (ev) => {
         const formula = ev.currentTarget.dataset.formula;
-        await this.rollTable(formula);
-        this.close();
+        this.close(); // close right away
+
+        // Defer the roll so the DOM can paint the close first
+        setTimeout(() => {
+          this.rollTable(formula).catch(console.error);
+        }, 0);
       });
     });
 
-    el.querySelector("[data-action='close']")?.addEventListener("click", () => this.close());
+    // Explicit close button (if present)
+    const closeBtn = el.querySelector("[data-action='close']");
+    if (closeBtn) {
+      closeBtn.addEventListener("click", () => this.close());
+    }
   }
 
   getTableUuid() {
@@ -195,7 +205,7 @@ export class DaggerheartTableDialog extends foundry.applications.api.HandlebarsA
         speaker: ChatMessage.getSpeaker()
       });
 
-      ui.notifications.info(`${game.i18n.localize("DH_TABLES.Found")}: ${cleanName} (${rarity})`);
+      //ui.notifications.info(`${game.i18n.localize("DH_TABLES.Found")}: ${cleanName} (${rarity})`);
     } catch (err) {
       console.error(err);
       ui.notifications.error(game.i18n.localize(errKey));

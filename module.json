@@ -1,34 +1,38 @@
 {
   "id": "daggerheart-loot-rolls",
   "title": "Daggerheart Loot Rolls",
-  "description": "Universal Loot & Consumables table roller for Daggerheart system.",
-  "version": "3.2.0",
+  "description": "<p>Universal Loot &amp; Consumables table roller for Daggerheart system.</p>",
+  "version": "3.3.0",
   "compatibility": {
     "minimum": "13",
     "verified": "13"
   },
   "authors": [
     {
-     "name": "Gus",
-     "flags": {}
+      "name": "Gus",
+      "flags": {}
     }
   ],
   "esmodules": [
     "scripts/module.mjs"
   ],
   "styles": [
-    "styles/daggerheart-loot.css"
+    {
+      "src": "styles/daggerheart-loot.css"
+    }
   ],
   "languages": [
     {
       "lang": "en",
       "name": "English",
-      "path": "lang/en.json"
+      "path": "lang/en.json",
+      "flags": {}
     },
-        {
+    {
       "lang": "pt-br",
       "name": "Português (Brasil)",
-      "path": "lang/pt-br.json"
+      "path": "lang/pt-br.json",
+      "flags": {}
     }
   ],
   "relationships": {
@@ -40,11 +44,41 @@
       }
     ]
   },
-
   "url": "https://github.com/mordachai/daggerheart-loot-rolls",
   "manifest": "https://github.com/mordachai/daggerheart-loot-rolls/raw/main/module.json",
   "download": "https://github.com/mordachai/daggerheart-loot-rolls/releases/latest/download/daggerheart-loot-rolls.zip",
-
-  "packs": [],
-  "license": "MIT"
+  
+  "packFolders": [{
+    "name": "Daggerheart Loot Rolls",
+    "sorting": "a",
+    "color": "#A56C02",
+    "packs": [
+      "daggerheart-loot-macros",
+      "daggerheart-loot-tables"
+    ]
+  }],
+  "packs": [
+    {
+      "name": "daggerheart-loot-macros",
+      "label": "Daggerheart Loot Macros",
+      "path": "packs/daggerheart-loot-macros",
+      "type": "Macro",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      }
+    },
+    {
+      "name": "daggerheart-loot-tables",
+      "label": "Daggerheart Loot Tables",
+      "path": "packs/daggerheart-loot-tables",
+      "type": "RollTable",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      }
+    }
+  ],
+  "license": "MIT",
+  "flags": {}
 }

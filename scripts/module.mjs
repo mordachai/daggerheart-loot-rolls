@@ -2,9 +2,9 @@ import { DaggerheartTableDialog } from "../applications/DaggerheartTableDialog.m
 
 const MODULE_ID = "daggerheart-loot-rolls";
 
-// Defaults from your guide
-const DEFAULT_LOOT_UUID = "Compendium.daggerheart-extra-content.loot-and-consumable-tables.RollTable.lRO8ZMi00IUNUXeU";
-const DEFAULT_CONS_UUID = "Compendium.daggerheart-extra-content.loot-and-consumable-tables.RollTable.wr9bwWvnkuKLE77C";
+// Defaults
+const DEFAULT_LOOT_UUID = "Compendium.daggerheart-loot-rolls.daggerheart-loot-tables.RollTable.x88evqtghTai9cGu";
+const DEFAULT_CONS_UUID = "Compendium.daggerheart-loot-rolls.daggerheart-loot-tables.RollTable.vbw7RWt7VuLztqws";
 
 Hooks.once("init", () => {
   // World settings
@@ -27,19 +27,46 @@ Hooks.once("init", () => {
   });
 });
 
-// Scene Controls: create our own group (v13 object-style) and use onChange (not onClick)
+// Expose a public API so UI buttons and macros share the same functions
+Hooks.once("ready", () => {
+  const api = {
+    /** Open the dialog for a given table type ('loot' | 'consumables' | future types) */
+    openDialog: (tableType) => new DaggerheartTableDialog(tableType).render(true),
+
+    /** Convenience helpers */
+    openLoot: () => new DaggerheartTableDialog("loot").render(true),
+    openConsumables: () => new DaggerheartTableDialog("consumables").render(true),
+
+    /** Direct roll without showing the dialog */
+    roll: (tableType, formula) => {
+      const dlg = new DaggerheartTableDialog(tableType);
+      // Fire-and-forget so UI remains responsive
+      Promise.resolve().then(() => dlg.rollTable(formula)).catch(console.error);
+    }
+  };
+
+  // Attach API to the module for easy macro access
+  const mod = game.modules.get(MODULE_ID);
+  if (mod) mod.api = api;
+});
+
+// Scene Controls: Daggerheart Tools group
 Hooks.on("getSceneControlButtons", (controls) => {
   controls["daggerheart"] = {
     name: "daggerheart",
     title: "Daggerheart tools",
-    // Use your FA dagger or replace with custom SVG path:
-    // icon: "modules/daggerheart-loot-rolls/ui/dh-icn.svg",
-    icon: "fas fa-dagger",
+    icon: "fas fa-dagger", // or: "modules/daggerheart-loot-rolls/ui/dh-icn.svg"
     tools: {}
   };
 
-  // simple re-entry guard to avoid double-fires
+  // Simple re-entry guard to avoid double-fires
   let _dhToolBusy = false;
+  const guard = async (fn) => {
+    if (_dhToolBusy) return;
+    _dhToolBusy = true;
+    try { await fn(); }
+    finally { setTimeout(() => (_dhToolBusy = false), 250); }
+  };
 
   controls["daggerheart"].tools["loot"] = {
     name: "loot",
@@ -47,12 +74,7 @@ Hooks.on("getSceneControlButtons", (controls) => {
     icon: "fas fa-treasure-chest",
     button: true,
     visible: true,
-    onChange: async () => {
-      if (_dhToolBusy) return;
-      _dhToolBusy = true;
-      try { await new DaggerheartTableDialog("loot").render(true); }
-      finally { setTimeout(() => (_dhToolBusy = false), 250); }
-    }
+    onChange: () => guard(() => game.modules.get(MODULE_ID)?.api?.openLoot())
   };
 
   controls["daggerheart"].tools["consumables"] = {
@@ -61,11 +83,6 @@ Hooks.on("getSceneControlButtons", (controls) => {
     icon: "fas fa-flask",
     button: true,
     visible: true,
-    onChange: async () => {
-      if (_dhToolBusy) return;
-      _dhToolBusy = true;
-      try { await new DaggerheartTableDialog("consumables").render(true); }
-      finally { setTimeout(() => (_dhToolBusy = false), 250); }
-    }
+    onChange: () => guard(() => game.modules.get(MODULE_ID)?.api?.openConsumables())
   };
 });

@@ -91,7 +91,7 @@
 }
 .dice-row {
   display: flex;
-  gap: 1rem;
+  gap: 2.5rem;
   justify-content: center;
   margin-bottom: 1.5rem;
 }
@@ -99,13 +99,13 @@
   color: #F3C267;
   background: none;
   border: 1px solid #F3C267;
-  padding: 0.8rem 2rem;
+  padding: 1rem 2rem;
   font-weight: bold;
   font-size: 1.2rem;
   cursor: pointer;
 }
 .btn-wide {
-  min-width: 120px;
+  min-width: 180px;
 }
 .btn-block {
   width: 100%;
